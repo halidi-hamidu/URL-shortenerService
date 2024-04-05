@@ -1,1 +1,2 @@
-![Image Name](/path/to/image.png)
+![Image Name]![Uploading image.png…]()
+
