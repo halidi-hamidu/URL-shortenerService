@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
 import requests
+from decouple import config
 
 
 # Create your views here.
@@ -10,7 +11,7 @@ def homePage(request):
     if request.method == 'POST':
         get_url = request.POST.get('original_url')
 
-        access_token = '9717f9f1978e69f7a5a1ac7f75b86f23f3e2fba6'  
+        access_token =config('BITLY_ACCESS_TOKEN')  
         endpoint = "https://api-ssl.bitly.com/v4/shorten"
         headers = {
             "Authorization": f"Bearer {access_token}",
