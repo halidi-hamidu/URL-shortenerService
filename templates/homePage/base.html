@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> urlShorten {%block title %}  {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid navigation">
+    <div class="title"><a class="navbar-brand" href="#">Urlshorten</a></div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="right">
+
+      <form class="d-flex float-right">
+        <button class="btn btn-outline-success " type="submit">Login</button>
+        <button class="btn btn-outline-success  mx-1" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    {% block content %}
+
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+<script src="{% static 'js/darling.js' %}"></script>
+
+{% for message in messages %}
+{% if message.tags == 'success' %}
+      <script src="{% static 'js/darling.js' %}"></script>
+      <script>
+        var m = "{{message}}";
+        // swal({
+        //   position: 'top-end',
+        //   title :"success",
+        //   text: m,
+        //   icon: "success",
+        //   showConfirmButton: false,
+        //   timer: 1500
+        // });
+        swal({
+        position: 'top-right',
+        icon: 'success',
+        title:"success",
+        text:m,
+        showConfirmButton: true,
+      });
+      $(document).load();
+      </script>
+    {% endif %}
+ {% endfor %}
+</body>
+</html>

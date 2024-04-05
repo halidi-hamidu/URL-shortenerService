@@ -1,0 +1,53 @@
+{% extends './base.html' %}
+   {% load static %}
+{% block title %} home-page{% endblock title %}
+
+
+{% block content %}  
+<div class="homepage_hero_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="inner_section">
+                     <h1>URL shortened Services</h1>
+                     <p>After clicking the "Get Started" button, a dialog box will open where you can paste your URL for further processing. If you haven't already, you'll need to create an account or log in to view the results. </p>
+                     <button type="button" class=" getstarted" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Get started
+                    </button>
+
+                    {% comment %} modal started here  {% endcomment %}
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Paste url</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post">
+
+                                    {% csrf_token %}
+
+                                    <input type="text" class="input_button">
+
+                                  <button type="button" class="btn btn-primary generate">Generate shorten Url</button>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    {% comment %} end modal {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
