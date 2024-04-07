@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import *
@@ -8,6 +9,7 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
+@login_required
 def homePage(request):
     if request.method == 'POST':
         get_url = request.POST.get('original_url')
@@ -55,7 +57,7 @@ def homePage(request):
 
 
 # urlListPage
-
+@login_required
 def urlListPage(request):
     get_all_original_urls_and_shorten_url_generated_by_user = UrlModels.objects.filter(created_by = request.user)
     template_name = 'homePage/urlListPage.html'
