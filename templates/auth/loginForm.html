@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+
+{% load static %}
+{% block title %} login {% endblock %}
+
+{% block content %}
+
+  <div class="login_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="inner_form">
+                        
+                        <form action="" method="post">
+                            <img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+                            <strong><p class="text-center">URL shorten service</p></strong>
+                            {% csrf_token %}
+
+                            {{ login_form.as_p }}
+
+                            <div class="button-group">
+                                <button type="submit" > Login <i class="bi bi-box-arrow-in-right"></i></button>
+                            </div>
+                            <p class="pt-3 text-center">Don't have an account? <a href="{% url 'authApp:registerPage' %}">Register</a></p>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

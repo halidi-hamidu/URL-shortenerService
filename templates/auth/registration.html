@@ -1,0 +1,39 @@
+{% extends './base.html' %}
+
+{% load static %}
+{% block title %} register {% endblock %}
+
+{% block content %}
+
+  <div class="register_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="inner_form">
+                        
+                        <form action="" method="post">
+                            <img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+                            <strong><p class="text-center">Create Account</p></strong>
+
+                            {% csrf_token %}
+
+                           {% load i18n %}
+                            {% for field in register_form %}
+                            <div class="fieldWrapper">
+                                {{ field.errors }}
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                            <div class="button-group">
+                                <button type="submit" > Create account <i class="bi bi-box-arrow-in-right"></i></button>
+                            </div>
+                            <p class="pt-3 text-center">have an account? <a href="{% url 'authApp:loginPage' %}">Login</a></p>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
