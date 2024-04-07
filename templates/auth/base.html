@@ -4,42 +4,20 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> urlShorten {%block title %}  {% endblock %}</title>
+    <title>{% block title  %} {%endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/table_data.css' %}">
     <script src="{% static './js/darling.js' %}"></script>
-
 </head>
 <body>
-<nav class="navbar navbar-expand-lg stick">
-  <div class="container-fluid navigation">
-    {% if user.is_authenticated %}
-    <div class="title"><a class="navbar-brand" href="#">Login as <strong>{{ user.username }}</strong></a></div>
-    {% endif %}
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="right">
 
-      <form class="d-flex float-right">
-        {% comment %} <button class="btn btn-outline-success " type="submit"></button> {% endcomment %}
-        <button class="btn btn-outline-success  mx-1" type="submit"><a href="{% url 'authApp:logout' %}" class="text-decoration-none text-white">Logout</a></button>
-      </form>
-    </div>
-  </div>
-</nav>
     {% block content %}
 
-
     {% endblock %}
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+       
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
 <script src="{% static 'js/darling.js' %}"></script>
-<script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'js/datatables.js' %}"></script>
-<script src="{% static 'js/datatablesbos.js' %}"></script>
 
 {% for message in messages %}
 {% if message.tags == 'success' %}
@@ -79,9 +57,21 @@
         $(document).load();
       </script>
     {% endif %}
+{% if message.tags == 'info' %}
+      <script src="{% static 'js/darling.js' %}"></script>
+      <script>
+        var m = "{{message}}";
+        swal({
+          position: 'top-end',
+          title :"info",
+          text: m,
+          icon: "info",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        $(document).load();
+      </script>
+    {% endif %}
  {% endfor %}
- <script>
-  new DataTable('#example');
- </script>
 </body>
 </html>

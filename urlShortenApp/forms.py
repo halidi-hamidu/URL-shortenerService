@@ -10,6 +10,7 @@ class UrlModelsForm(ModelForm):
     exclude =[
       'shortened_url',
       'created_at',
-      'updated_at'
+      'updated_at',
+      'created_by',
     ]
 

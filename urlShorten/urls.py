@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   path('', include('urlShortenApp.urls',  namespace='urlShortenApp')),
+   path('', include('authApp.urls',  namespace='authApp')),
+   path('shorten-url', include('urlShortenApp.urls',  namespace='urlShortenApp')),
 ]
 
